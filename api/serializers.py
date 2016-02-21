@@ -1,5 +1,6 @@
 from api.models.user import UserProfile
 from api.models.commodity import Commodity
+from api.models.contribution import Contribution
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
@@ -33,3 +34,14 @@ class CommoditySerializer(serializers.ModelSerializer):
     class Meta:
         model = Commodity
         fields = ('url', 'name', 'requestor', 'price')
+
+
+class ContributionSerializer(serializers.ModelSerializer):
+    """Serializer for user contribution"""
+
+    co_buyer = serializers.ReadOnlyField(source='co_buyer.username')
+    # contributing_to = serializers.ReadOnlyField(source='co_buyer.username')
+
+    class Meta:
+        model = Contribution
+        fields = ('amount', 'co_buyer', 'contributing_to')

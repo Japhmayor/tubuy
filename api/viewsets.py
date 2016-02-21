@@ -2,7 +2,8 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from api.models.user import UserProfile
 from api.models.commodity import Commodity
-from api.serializers import UserSerializer, CommoditySerializer
+from api.models.contribution import Contribution
+from api.serializers import UserSerializer, CommoditySerializer, ContributionSerializer
 from django.db import IntegrityError
 
 
@@ -37,3 +38,12 @@ class CommodityViewset(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         user = UserProfile.objects.get(id=self.request.user.id)
         serializer.save(requestor=user)
+
+
+class ContributionViewset(viewsets.ModelViewSet):
+    queryset = Contribution.objects.all()
+    serializer_class = ContributionSerializer
+
+    def perform_create(self, serializer):
+        user = UserProfile.objects.get(id=self.request.user.id)
+        serializer.save(co_buyer=user)

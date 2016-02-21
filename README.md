@@ -9,7 +9,7 @@
 
 #### TODO
 
-- [ ] create a basic api powered by [DRF](http://www.django-rest-framework.org/)
+- [x] create a basic api powered by [DRF](http://www.django-rest-framework.org/)
 - [ ] have enpoints for
  * authenticating user
  * item to be buyed tugether
