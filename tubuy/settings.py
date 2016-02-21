@@ -79,7 +79,19 @@ WSGI_APPLICATION = 'tubuy.wsgi.application'
 
 DATABASES = {}
 
-DATABASES['default'] = dj_database_url.config()
+# Parse database configuration from $DATABASE_URL
+if os.getenv('TRAVIS_BUILD', None):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'limber',
+            'USER': 'travis',
+            'PASSWORD': '',
+            'HOST': '127.0.0.1',
+        }
+    }
+else:
+    DATABASES['default'] = dj_database_url.config()
 
 
 # Password validation
