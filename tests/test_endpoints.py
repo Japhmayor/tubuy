@@ -18,11 +18,11 @@ class APIResourcesTestCase(APITestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_tubuy_commodity_endpoint(self):
-        response = self.client.get('/api/commodity/')
+        response = self.client.get('/api/commodities/')
 
         self.assertEqual(response.status_code, 200)
 
     def test_tubuy_contribution_endpoint(self):
-        response = self.client.get('/api/contribution/')
+        response = self.client.get('/api/contributions/')
 
         self.assertEqual(response.status_code, 200)

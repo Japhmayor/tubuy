@@ -20,7 +20,7 @@
 
 
 #### documentation
-docs for the `tubuy` API can be found [here](https://tubuy.herokuapp.com/docs)
+docs for the `tubuy` API can be found [here](http://docs.tubuy.apiary.io/)
 
 
 #### License
