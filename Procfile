@@ -1,1 +1,1 @@
-web: gunicorn blst.wsgi --log-file -
+web: gunicorn tubuy.wsgi --log-file -

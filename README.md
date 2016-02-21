@@ -18,6 +18,11 @@
  * express **co-buyer** interest in buying tugether
 - [ ] make it RESTful
 
+
+#### documentation
+docs for the `tubuy` API can be found [here](https://tubuy.herokuapp.com/docs)
+
+
 #### License
 Copyright &copy; 2016 - Collin Mutembei
 
