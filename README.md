@@ -16,7 +16,7 @@
  * item to be buyed tugether
  * making request for **co-buyer**
  * express **co-buyer** interest in buying tugether
-- [ ] make it RESTful
+- [x] make it RESTful
 
 
 #### documentation
