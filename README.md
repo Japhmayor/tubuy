@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/andela-cmutembei/tubuy.svg?branch=master)](https://travis-ci.org/andela-cmutembei/tubuy)
 ### tubuy
 
 > "sharing is caring" - unknown
@@ -9,8 +10,8 @@
 
 #### TODO
 
-- [ ] create a basic api powered by [DRF](http://www.django-rest-framework.org/)
-- [ ] have enpoints for
+- [x] create a basic api powered by [DRF](http://www.django-rest-framework.org/)
+- [x] have enpoints for
  * authenticating user
  * item to be buyed tugether
  * making request for **co-buyer**
