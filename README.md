@@ -16,7 +16,12 @@
  * item to be buyed tugether
  * making request for **co-buyer**
  * express **co-buyer** interest in buying tugether
-- [ ] make it RESTful
+- [x] make it RESTful
+
+
+#### documentation
+docs for the `tubuy` API can be found [here](http://docs.tubuy.apiary.io/)
+
 
 #### License
 Copyright &copy; 2016 - Collin Mutembei
