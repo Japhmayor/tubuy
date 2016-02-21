@@ -4,6 +4,7 @@ from api import viewsets
 
 router = routers.DefaultRouter()
 router.register(r'users',  viewsets.UserlistViewset)
+router.register(r'commodity',  viewsets.CommodityViewset)
 
 urlpatterns = [
     url(r'^api/', include(router.urls)),

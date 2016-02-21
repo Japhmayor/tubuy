@@ -1,4 +1,5 @@
 from api.models.user import UserProfile
+from api.models.commodity import Commodity
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
@@ -20,5 +21,15 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         """Modify default method to create user."""
-        import ipdb; ipdb.set_trace()
         return User.create_userprofile(**validated_data)
+
+
+class CommoditySerializer(serializers.ModelSerializer):
+    """Serializer for user commodity"""
+
+    requestor = serializers.ReadOnlyField(source='requestor.username')
+    price = serializers.DecimalField(max_digits=8, decimal_places=2)
+
+    class Meta:
+        model = Commodity
+        fields = ('url', 'name', 'requestor', 'price')
