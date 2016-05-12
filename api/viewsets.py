@@ -1,10 +1,14 @@
+from django.db import IntegrityError
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from api.models.user import UserProfile
 from api.models.commodity import Commodity
 from api.models.contribution import Contribution
-from api.serializers import UserSerializer, CommoditySerializer, ContributionSerializer
-from django.db import IntegrityError
+from api.serializers import (
+    UserSerializer,
+    CommoditySerializer,
+    ContributionSerializer
+    )
 
 
 class UserlistViewset(viewsets.ModelViewSet):

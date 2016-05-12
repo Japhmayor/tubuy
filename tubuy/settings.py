@@ -134,7 +134,3 @@ STATIC_URL = '/static/'
 
 
 AUTH_USER_MODEL = 'api.User'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "web/"),
-)
