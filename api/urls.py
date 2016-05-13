@@ -3,7 +3,7 @@ from rest_framework import routers
 from api import viewsets
 
 router = routers.DefaultRouter()
-router.register(r'users',  viewsets.UserlistViewset)
+router.register(r'users',  viewsets.UserViewset)
 router.register(r'commodities',  viewsets.CommodityViewset)
 router.register(r'contributions',  viewsets.ContributionViewset)
 

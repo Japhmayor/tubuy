@@ -1,7 +1,5 @@
-from django.db import IntegrityError
-from rest_framework import viewsets, status
-from rest_framework.response import Response
-from api.models.user import UserProfile
+from rest_framework import viewsets
+from api.models.user import User
 from api.models.commodity import Commodity
 from api.models.contribution import Contribution
 from api.serializers import (
@@ -11,43 +9,39 @@ from api.serializers import (
     )
 
 
-class UserlistViewset(viewsets.ModelViewSet):
-    queryset = UserProfile.objects.all()
+class UserViewset(viewsets.ModelViewSet):
+    """viewset for the user model
+    """
+
+    queryset = User.objects.all()
     serializer_class = UserSerializer
-
-    def create(self, request):
-        """Define customizations during user creation."""
-
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            try:
-                UserProfile.create_userprofile(**serializer.validated_data)
-                return Response({
-                    'message': 'user created'
-                }, status=status.HTTP_201_CREATED)
-            except IntegrityError:
-                return Response({
-                    'message': 'user with entered email already exists'
-                }, status=status.HTTP_400_BAD_REQUEST)
-
-        return Response({
-            'message': "user not created"
-        }, status=status.HTTP_400_BAD_REQUEST)
+    lookup_field = ('uuid')
 
 
 class CommodityViewset(viewsets.ModelViewSet):
+    """viewset for the commodity model
+    """
+
     queryset = Commodity.objects.all()
     serializer_class = CommoditySerializer
 
     def perform_create(self, serializer):
-        user = UserProfile.objects.get(id=self.request.user.id)
+        """sets the currently logged in user as requestor
+        """
+        user = User.objects.get(uuid=self.request.user.uuid)
         serializer.save(requestor=user)
 
 
 class ContributionViewset(viewsets.ModelViewSet):
+    """viewset for the contribution model
+    """
+
     queryset = Contribution.objects.all()
     serializer_class = ContributionSerializer
 
     def perform_create(self, serializer):
-        user = UserProfile.objects.get(id=self.request.user.id)
-        serializer.save(co_buyer=user)
+        """sets the currently logged in user as contributer
+        """
+
+        user = User.objects.get(uuid=self.request.user.uuid)
+        serializer.save(contributer=user)
