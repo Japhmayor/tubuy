@@ -1,14 +1,14 @@
-from api.models.user import UserProfile
+from api.models.user import User
 from api.models.commodity import Commodity
 from api.models.contribution import Contribution
-from django.contrib.auth.models import User
 from rest_framework import serializers
 
 
 class UserSerializer(serializers.ModelSerializer):
-    """Serializer for user information"""
+    """Serializer for user model
+    """
 
-    email = serializers.EmailField(write_only=True, required=True)
+    uuid = serializers.UUIDField(read_only=True, format='hex')
     password = serializers.CharField(
         style={'input_type': 'password'},
         write_only=True,
@@ -16,32 +16,50 @@ class UserSerializer(serializers.ModelSerializer):
     )
 
     class Meta:
-        model = UserProfile
-        fields = ('uuid', 'username', 'url', 'email', 'password')
-        write_only_fields = ('email', 'password',)
+        model = User
+        fields = (
+            'url',
+            'uuid',
+            'username',
+            'password',
+            'phone_number',
+            'email',
+            )
+        extra_kwargs = {
+            'url': {'lookup_field': 'uuid'}
+        }
 
     def create(self, validated_data):
-        """Modify default method to create user."""
-        return User.create_userprofile(**validated_data)
+        """creates a user
+        """
+        user = User(**validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
 
 
 class CommoditySerializer(serializers.ModelSerializer):
-    """Serializer for user commodity"""
+    """Serializer for commodity model
+    """
 
     requestor = serializers.ReadOnlyField(source='requestor.username')
     price = serializers.DecimalField(max_digits=8, decimal_places=2)
 
     class Meta:
         model = Commodity
-        fields = ('url', 'name', 'requestor', 'price')
+        fields = ('url', 'name', 'description', 'requestor', 'price')
 
 
 class ContributionSerializer(serializers.ModelSerializer):
-    """Serializer for user contribution"""
+    """Serializer for contribution model
+    """
 
-    co_buyer = serializers.ReadOnlyField(source='co_buyer.username')
-    # contributing_to = serializers.ReadOnlyField(source='co_buyer.username')
+    contributer = serializers.ReadOnlyField(source='contributer.username')
+    contributing_to = serializers.SlugRelatedField(
+        read_only=True,
+        slug_field='name'
+        )
 
     class Meta:
         model = Contribution
-        fields = ('amount', 'co_buyer', 'contributing_to')
+        fields = ('amount', 'contributer', 'contributing_to')
