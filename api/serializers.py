@@ -44,6 +44,7 @@ class CommoditySerializer(serializers.ModelSerializer):
 
     requestor = serializers.ReadOnlyField(source='requestor.username')
     price = serializers.DecimalField(max_digits=8, decimal_places=2)
+    description = serializers.CharField(allow_blank=True, required=False)
 
     class Meta:
         model = Commodity
