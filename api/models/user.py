@@ -7,7 +7,6 @@ from django.core import validators
 from django.db import models
 import uuid
 import re
-from phonenumber_field.modelfields import PhoneNumberField
 
 
 class UserManager(BaseUserManager):
@@ -47,7 +46,7 @@ class User(AbstractBaseUser, PermissionsMixin):
             'invalid'
         )]
     )
-    phone_number = PhoneNumberField(primary_key=True)
+    phone_number = models.CharField(max_length=13, unique=True)
     email = models.EmailField(blank=True)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(auto_now_add=True)
