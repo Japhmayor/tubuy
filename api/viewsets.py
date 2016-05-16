@@ -39,6 +39,7 @@ class ContributionViewset(viewsets.ModelViewSet):
 
     queryset = Contribution.objects.all()
     serializer_class = ContributionSerializer
+    lookup_field = ('name')
     permission_classes = (permissions.IsAuthenticated,)
 
     def perform_create(self, serializer):
@@ -46,4 +47,7 @@ class ContributionViewset(viewsets.ModelViewSet):
         """
 
         user = User.objects.get(uuid=self.request.user.uuid)
-        serializer.save(contributer=user)
+        contributing_to = Commodity.objects.get(
+            name=self.request.data['contributing_to']
+            )
+        serializer.save(contributer=user, contributing_to=contributing_to)

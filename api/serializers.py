@@ -57,7 +57,7 @@ class ContributionSerializer(serializers.ModelSerializer):
 
     contributer = serializers.ReadOnlyField(source='contributer.username')
     contributing_to = serializers.SlugRelatedField(
-        read_only=True,
+        queryset=Commodity.objects.all(),
         slug_field='name'
         )
 

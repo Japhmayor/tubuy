@@ -3,6 +3,7 @@ from api.models.user import User
 
 
 class APIResourcesTestCase(APITestCase):
+    """Testcase for the tubuy API"""
 
     def setUp(self):
         self.client = APIClient()
@@ -22,6 +23,8 @@ class APIResourcesTestCase(APITestCase):
         self.token = user_token.data['token']
 
     def test_tubuy_api_endpoint(self):
+        """test that the api endpoint is self documenting"""
+
         response = self.client.get('/api/')
 
         self.assertEqual(response.status_code, 200)
@@ -39,11 +42,15 @@ class APIResourcesTestCase(APITestCase):
             )
 
     def test_tubuy_users_endpoint(self):
+        """test for the user endpoint"""
+
         response = self.client.get('/api/users/')
 
         self.assertEqual(response.status_code, 200)
 
     def test_tubuy_commodity_endpoint(self):
+        """test for the commodity endpoint"""
+
         before_auth_response = self.client.get('/api/commodities/')
 
         # before authentication
@@ -55,6 +62,8 @@ class APIResourcesTestCase(APITestCase):
         self.assertEqual(after_auth_response.status_code, 200)
 
     def test_tubuy_contribution_endpoint(self):
+        """test for the contributions endpoint"""
+
         before_auth_response = self.client.get('/api/contributions/')
 
         # before authentication
