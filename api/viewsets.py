@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from api.models.user import User
 from api.models.commodity import Commodity
 from api.models.contribution import Contribution
@@ -24,6 +24,7 @@ class CommodityViewset(viewsets.ModelViewSet):
 
     queryset = Commodity.objects.all()
     serializer_class = CommoditySerializer
+    permission_classes = (permissions.IsAuthenticated,)
 
     def perform_create(self, serializer):
         """sets the currently logged in user as requestor
@@ -38,10 +39,15 @@ class ContributionViewset(viewsets.ModelViewSet):
 
     queryset = Contribution.objects.all()
     serializer_class = ContributionSerializer
+    lookup_field = ('name')
+    permission_classes = (permissions.IsAuthenticated,)
 
     def perform_create(self, serializer):
         """sets the currently logged in user as contributer
         """
 
         user = User.objects.get(uuid=self.request.user.uuid)
-        serializer.save(contributer=user)
+        contributing_to = Commodity.objects.get(
+            name=self.request.data['contributing_to']
+            )
+        serializer.save(contributer=user, contributing_to=contributing_to)

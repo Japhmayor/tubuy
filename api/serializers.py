@@ -44,6 +44,7 @@ class CommoditySerializer(serializers.ModelSerializer):
 
     requestor = serializers.ReadOnlyField(source='requestor.username')
     price = serializers.DecimalField(max_digits=8, decimal_places=2)
+    description = serializers.CharField(allow_blank=True, required=False)
 
     class Meta:
         model = Commodity
@@ -56,7 +57,7 @@ class ContributionSerializer(serializers.ModelSerializer):
 
     contributer = serializers.ReadOnlyField(source='contributer.username')
     contributing_to = serializers.SlugRelatedField(
-        read_only=True,
+        queryset=Commodity.objects.all(),
         slug_field='name'
         )
 
