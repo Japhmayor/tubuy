@@ -9,6 +9,11 @@
 
 **Tubuy** is a platform that enables seamless crowd-funding towards commodities for people with a common interest. It is currently a work-in-progress.
 
+### Running tests
+
+```shell
+$ python manage.py test
+```
 
 ### License
 ```
