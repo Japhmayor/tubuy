@@ -3,6 +3,13 @@ import uuid
 from api.models.user import User
 
 
+def upload_path(instance):
+    requestor = User.objects.get(uuid=instance.requestor.uuid)
+    requestor_hex = requestor.uuid.hex
+    file_path = "/commodities/{0}".format(requestor_hex[-20:])
+    return file_path
+
+
 class Commodity(models.Model):
     """Commodity model defining item to be co-buyied
     """
@@ -12,7 +19,7 @@ class Commodity(models.Model):
         default=uuid.uuid4,
         editable=False
     )
-    requestor = models.ForeignKey(User)
+    requestor = models.ForeignKey(User, to_field='uuid')
     price = models.DecimalField(max_digits=8, decimal_places=2)
     name = models.CharField(max_length=70)
     description = models.TextField()
@@ -20,6 +27,7 @@ class Commodity(models.Model):
     date_modified = models.DateTimeField(auto_now=True)
     funded = models.BooleanField(default=False)
     date_funded = models.DateField(blank=True, null=True)
+    commodity_image = models.ImageField(upload_to=upload_path)
 
     def __unicode__(self):
         return '{0} {1} {2}'.format(self.requestor, self.name, self.price)
