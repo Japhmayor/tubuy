@@ -24,6 +24,7 @@ class CommodityViewset(viewsets.ModelViewSet):
 
     queryset = Commodity.objects.all()
     serializer_class = CommoditySerializer
+    lookup_field = ('uuid')
     permission_classes = (permissions.IsAuthenticated,)
 
     def perform_create(self, serializer):
