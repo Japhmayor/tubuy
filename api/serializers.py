@@ -46,17 +46,25 @@ class CommoditySerializer(serializers.ModelSerializer):
     requestor = serializers.ReadOnlyField(source='requestor.username')
     price = serializers.DecimalField(max_digits=8, decimal_places=2)
     commodity_qr = serializers.ImageField(use_url=True, read_only=True)
+    funded = serializers.BooleanField(read_only=True)
+    remaining_amount = serializers.DecimalField(
+        max_digits=8,
+        decimal_places=2,
+        read_only=True
+    )
 
     class Meta:
         model = Commodity
         fields = (
             'url',
+            'commodity_qr',
             'uuid',
             'name',
             'description',
             'requestor',
+            'funded',
             'price',
-            'commodity_qr'
+            'remaining_amount'
         )
         extra_kwargs = {
             'url': {'lookup_field': 'uuid'}

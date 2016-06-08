@@ -31,7 +31,8 @@ class CommodityViewset(viewsets.ModelViewSet):
         """sets the currently logged in user as requestor
         """
         user = User.objects.get(uuid=self.request.user.uuid)
-        serializer.save(requestor=user)
+        remainder = serializer.validated_data['price']
+        serializer.save(requestor=user, remaining_amount=remainder)
 
 
 class ContributionViewset(viewsets.ModelViewSet):
