@@ -175,8 +175,3 @@ JWT_AUTH = {
 
     'JWT_AUTH_HEADER_PREFIX': 'JWT',
 }
-
-# directory to contain commodity QRs
-MEDIA_ROOT = os.path.join(BASE_DIR, 'resources')
-
-MEDIA_URL = '/r/'
