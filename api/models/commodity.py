@@ -37,6 +37,7 @@ class Commodity(models.Model):
     funded = models.BooleanField(default=False)
     date_funded = models.DateField(blank=True, null=True)
     commodity_qr = models.ImageField(upload_to=upload_path, blank=True)
+    remaining_amount = models.DecimalField(max_digits=8, decimal_places=2)
 
     def save(self, **kwargs):
         """overrides the save method for the model
