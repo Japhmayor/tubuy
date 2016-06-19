@@ -6,7 +6,7 @@ import time
 from io import BytesIO
 import pyqrcode
 from PIL import Image
-from user import User
+from api.models.user import User
 
 
 def upload_path(instance, filename):
