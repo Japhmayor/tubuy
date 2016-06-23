@@ -2,6 +2,7 @@ from django.db import models
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import uuid
 import base64
+import random
 import time
 from io import BytesIO
 import pyqrcode
@@ -42,8 +43,9 @@ class Commodity(models.Model):
     def save(self, **kwargs):
         """overrides the save method for the model
         """
+        salt = (random.random() ** 2) * 10 ** 2
         request = pyqrcode.create(
-            '{0}.{1}'.format(str(self.uuid), self.price),
+            '{0}.{1}.{2}'.format(str(self.uuid), self.price, salt),
             version=10
             )
         encoded_request = request.png_as_base64_str()
