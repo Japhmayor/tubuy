@@ -1,12 +1,5 @@
 from django.db import models
-from django.core.files.uploadedfile import InMemoryUploadedFile
 import uuid
-import base64
-import random
-import time
-from io import BytesIO
-import pyqrcode
-from PIL import Image
 from api.models.user import User
 
 
@@ -43,34 +36,6 @@ class Commodity(models.Model):
     def save(self, **kwargs):
         """overrides the save method for the model
         """
-        salt = (random.random() ** 2) * 10 ** 2
-        request = pyqrcode.create(
-            '{0}.{1}.{2}'.format(str(self.uuid), self.price, salt),
-            version=10
-            )
-        encoded_request = request.png_as_base64_str()
-        image = Image.open(
-            BytesIO(base64.b64decode(encoded_request.encode()))
-            )
-        filename = '{0}.{1}'.format(
-            str(time.time())[:10],
-            (image.format).lower()
-        )
-        memory_image = BytesIO()
-        image.save(memory_image, format=image.format)
-        qr_file = InMemoryUploadedFile(
-            memory_image,
-            None,
-            filename,
-            'image/png',
-            memory_image.tell,
-            None
-        )
-        self.commodity_qr.save(
-            filename,
-            qr_file,
-            save=False,
-        )
         super(Commodity, self).save(**kwargs)
 
     def __unicode__(self):
