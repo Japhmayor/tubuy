@@ -9,7 +9,7 @@ These are just guidelines, not rules, use your best judgment and feel free to pr
 
 [What should I know before I get started?](#what-should-i-know-before-i-get-started)
   * [Code of Conduct](#code-of-conduct)
-  * [Design Decisions](#design-decisions)
+  * [Design Decisions](#project-decisions)
 
 [How Can I Contribute?](#how-can-i-contribute)
   * [Reporting Bugs](#reporting-bugs)
