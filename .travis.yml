@@ -7,8 +7,10 @@ env:
   global:
     - TRAVIS_BUILD=true
 script:
-    - coverage run --append manage.py test
+    - coverage run --append manage.py test tests
 branches:
   only:
       - master
       - develop
+after_success:
+    - coveralls
