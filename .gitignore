@@ -63,3 +63,6 @@ target/
 
 # coveralls config
 .coveralls.yml
+
+# dotenv config
+.env
