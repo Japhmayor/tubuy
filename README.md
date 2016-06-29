@@ -1,12 +1,14 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![Build Status](https://travis-ci.org/SolubleCode/tubuy.svg?branch=master)](https://travis-ci.org/SolubleCode/tubuy)
+[![Coverage Status](https://coveralls.io/repos/github/SolubleCode/tubuy/badge.svg?branch=develop)](https://coveralls.io/github/SolubleCode/tubuy?branch=develop)
 [![Code Issues](https://www.quantifiedcode.com/api/v1/project/69c35832d6df484cb4150bd036a4fa7d/badge.svg)](https://www.quantifiedcode.com/app/project/69c35832d6df484cb4150bd036a4fa7d)
+
 ## [Tubuy](http://docs.tubuy.apiary.io/)
 
 
 ![sharing](https://cdn.rawgit.com/andela-cmutembei/nunua/master/static/images/sharing.gif)
 
-> "sharing is caring" - anonymous
+> "sharing is caring" - anonymous``
 
 
 **Tubuy** is a platform that enables seamless crowd-funding towards commodities for people with a common interest. It is currently a work-in-progress.
