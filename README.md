@@ -1,3 +1,4 @@
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![Build Status](https://travis-ci.org/SolubleCode/tubuy.svg?branch=master)](https://travis-ci.org/SolubleCode/tubuy)
 [![Code Issues](https://www.quantifiedcode.com/api/v1/project/69c35832d6df484cb4150bd036a4fa7d/badge.svg)](https://www.quantifiedcode.com/app/project/69c35832d6df484cb4150bd036a4fa7d)
 ## [Tubuy](http://docs.tubuy.apiary.io/)
