@@ -17,13 +17,18 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
-from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
+from rest_framework_jwt.views import (
+    obtain_jwt_token,
+    refresh_jwt_token,
+    verify_jwt_token
+)
 
 urlpatterns = [
     url(r'^', include('api.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^auth/', obtain_jwt_token),
-    url(r'^refresh/', refresh_jwt_token),
+    url(r'^token-auth/', obtain_jwt_token),
+    url(r'^token-refresh/', refresh_jwt_token),
+    url(r'^token-verify/', verify_jwt_token),
 ]
 
 if settings.DEBUG:
