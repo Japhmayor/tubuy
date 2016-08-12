@@ -1,0 +1,148 @@
+FORMAT: 1A
+HOST: https://tubuy.herokuapp.com/
+
+# tubuy
+
+`tubuy` is a **co-buying** API that people with a common interest at a commodity to buy it ***tugether.***  
+
+`tubuy` believe's in **sharing is caring**
+## API root [/api/]
+
+### list all endpoints [GET]
+
++ Response 200 (application/json)
+
+        {
+                {
+                        "users": "https://tubuy.herokuapp.com/api/users/",
+                        "commodity": "https://tubuy.herokuapp.com/api/commodities/",
+                        "contribution": "https://tubuy.herokuapp.com/api/contributions/"
+                }
+        }
+## users [/api/users/]
+
+### list all users [GET]
+
++ Response 200 (application/json)
+
+        [
+                {
+                        "uuid": "cd85bdaa7a8343a691430dffad2266a7",
+                        "username": "userone",
+                        "url": "https://tubuy.herokuapp.com/api/users/1/"
+                },
+                {
+                        "uuid": "fe97e1650c424062848fdccdf3860dbc",
+                        "username": "usertwo",
+                        "url": "https://tubuy.herokuapp.com/api/users/2/"
+                }
+        ]
+
+### create a new user [POST]
+
+a new user is created using a `username`, `email` and `password`
+
++ Request (application/json)
+
+        {
+                "username": "washington",
+                "email":"washington@tubuy.io",
+                "password": "washington"
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                    "message": "user created"
+            }
+
+
+## commodities [/api/commodities/]
+
+### list all commodities [GET]
+
++ Response 200 (application/json)
+
+        [
+                {
+                            "url": "https://tubuy.herokuapp.com/api/commodities/1/",
+                            "name": "buy pizza on terrific tuesday",
+                            "requestor": "adam",
+                            "price": "1000.00"
+                },
+                {
+                            "url": "https://tubuy.herokuapp.com/api/commodities/2/",
+                            "name": "buy ferrari",
+                            "requestor": "eve",
+                            "price": "200000.00"
+                }
+        ]
+
+### create a new commodity [POST]
+
+a new commodity is created using a `name` and the items' corresponding `price`
+
++ Request (application/json)
+
+        {
+                "name": "buy centum shares",
+                "price": "200"
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                    "url": "https://tubuy.herokuapp.com/api/commodities/2/",
+                    "name": "buy centum shares",
+                    "requestor": "josh",
+                    "price": "200.00"
+            }
+
+
+## contributions [/api/contributions/]
+
+### list all contributions [GET]
+
++ Response 200 (application/json)
+
+        [
+                {
+                        "amount": "20.00",
+                        "co_buyer": "eric",
+                        "contributing_to": "buy pizza on terrific tuesday"
+                },
+                {
+                        "amount": "500.00",
+                        "co_buyer": "josh",
+                        "contributing_to": "buy ferrari"
+                },
+                {
+                        "amount": "10.00",
+                        "co_buyer": "collin",
+                        "contributing_to": "buy ferrari"
+                }
+        ]
+
+### create a new commodity [POST]
+
+a new contribution is created using `amount`
+
++ Request (application/json)
+
+        {
+                "amount": "10.00"
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                    "amount": "10.00",
+                    "co_buyer": "collin",
+                    "contributing_to": "buy ferrari"
+            }
