@@ -17,7 +17,8 @@
 
 Feel free to test the `tubuy` [API](http://docs.tubuy.apiary.io/) and offer feedback through <whenyourepissed@gmail.com>.
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/0c156f0887e02eb3de0d#?env%5Btubuy-heroku%5D=W3sia2V5IjoidHVidXlfdXJsIiwidmFsdWUiOiJ0dWJ1eS5oZXJva3VhcHAuY29tIiwidHlwZSI6InRleHQiLCJlbmFibGVkIjp0cnVlfV0=)
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/7f0aa338aa2fdcdd9866#?env%5Btubuy-heroku%5D=W3sia2V5IjoidHVidXlfdXJsIiwidmFsdWUiOiJ0dWJ1eS5oZXJva3VhcHAuY29tIiwidHlwZSI6InRleHQiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6Imp3dF90b2tlbiIsInZhbHVlIjoiIiwidHlwZSI6InRleHQiLCJlbmFibGVkIjp0cnVlfV0=)
 
 In the spirit of [TDD](http://www.obeythetestinggoat.com/) you can run the tests as follows:
 
