@@ -1,6 +1,8 @@
 from django.db import models
+import random
 import uuid
 from api.models.user import User
+from api.util import generate_qr
 
 
 def upload_path(instance, filename):
@@ -36,6 +38,8 @@ class Commodity(models.Model):
     def save(self, **kwargs):
         """overrides the save method for the model
         """
+        salt = (random.random() ** 2) * 10 ** 2
+        generate_qr(self, salt)
         super(Commodity, self).save(**kwargs)
 
     def __unicode__(self):
