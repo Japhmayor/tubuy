@@ -1,7 +1,8 @@
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![Build Status](https://travis-ci.org/SolubleCode/tubuy.svg?branch=master)](https://travis-ci.org/SolubleCode/tubuy)
 [![Coverage Status](https://coveralls.io/repos/github/SolubleCode/tubuy/badge.svg?branch=develop)](https://coveralls.io/github/SolubleCode/tubuy?branch=develop)
 [![Code Issues](https://www.quantifiedcode.com/api/v1/project/69c35832d6df484cb4150bd036a4fa7d/badge.svg)](https://www.quantifiedcode.com/app/project/69c35832d6df484cb4150bd036a4fa7d)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![Slack Status](https://solublecode-slack.herokuapp.com/badge.svg)](https://solublecode-slack.herokuapp.com)
 
 ## [Tubuy](http://docs.tubuy.apiary.io/)
 
