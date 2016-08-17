@@ -22,9 +22,11 @@ class Contribution(models.Model):
     def save(self, **kwargs):
         """overrides the save method for the model
         """
-        last_contribution = Contribution.objects.all().last()
-        self.parent_block = 0 if not last_contribution else last_contribution.uuid
         commodity = self.contributing_to
+        last_contribution = Contribution.objects.filter(
+            contributing_to=commodity
+            ).last()
+        self.parent_block = 0 if not last_contribution else last_contribution.uuid
         if not commodity.funded:
             commodity.remaining_amount -= self.amount
             commodity.funded = (False, True)[commodity.remaining_amount <= 0]
