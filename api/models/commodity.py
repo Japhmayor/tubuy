@@ -9,9 +9,13 @@ def upload_path(instance, filename):
     """sets the directory for storing QR codes
     """
 
-    requestor = User.objects.get(uuid=instance.requestor.uuid)
-    requestor_hex = requestor.uuid.hex
-    file_path = "commodities/{0}/{1}".format(requestor_hex[-20:], filename)
+    requestor_hex = instance.requestor.uuid.hex
+    commodity_hex = instance.uuid.hex
+    file_path = "{0}/{1}/{2}".format(
+        requestor_hex[-20:],
+        commodity_hex[-20:],
+        filename
+    )
     return file_path
 
 

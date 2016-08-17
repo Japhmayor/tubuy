@@ -2,7 +2,6 @@ from django.db import models
 import uuid
 from api.models.user import User
 from api.models.commodity import Commodity
-# from api.util import generate_qr
 
 
 class Contribution(models.Model):
