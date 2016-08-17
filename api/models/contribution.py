@@ -2,7 +2,7 @@ from django.db import models
 import uuid
 from api.models.user import User
 from api.models.commodity import Commodity
-from api.util import generate_qr
+# from api.util import generate_qr
 
 
 class Contribution(models.Model):
@@ -26,7 +26,6 @@ class Contribution(models.Model):
         last_contribution = Contribution.objects.all().last()
         self.parent_block = 0 if not last_contribution else last_contribution.uuid
         commodity = self.contributing_to
-        generate_qr(commodity, self.parent_block)
         if not commodity.funded:
             commodity.remaining_amount -= self.amount
             commodity.funded = (False, True)[commodity.remaining_amount <= 0]

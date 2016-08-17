@@ -9,9 +9,14 @@ from PIL import Image
 def generate_qr(commodity, salt):
     """generates an in-memory QR code based off commodity
     """
-
+    remainder = commodity.remaining_amount
     request = pyqrcode.create(
-        '{0}.{1}.{2}'.format(str(commodity.uuid), commodity.price, salt),
+        '{0}.{1}.{2}.{3}'.format(
+            str(commodity.uuid),
+            commodity.price,
+            salt,
+            remainder
+            ),
         version=10
         )
     encoded_request = request.png_as_base64_str()
