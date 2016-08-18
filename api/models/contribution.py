@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator
 from django.db import models
 import uuid
 from api.models.user import User
@@ -14,7 +15,11 @@ class Contribution(models.Model):
         editable=False
     )
     contributer = models.ForeignKey(User)
-    amount = models.DecimalField(max_digits=8, decimal_places=2)
+    amount = models.DecimalField(
+        max_digits=8,
+        decimal_places=2,
+        validators=[MinValueValidator(0.01)]
+        )
     contributing_to = models.ForeignKey(Commodity)
     time = models.DateTimeField(auto_now_add=True)
     parent_block = models.CharField(max_length=70)

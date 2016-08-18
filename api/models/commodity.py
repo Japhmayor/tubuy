@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator
 from django.db import models
 import random
 import uuid
@@ -29,7 +30,11 @@ class Commodity(models.Model):
         editable=False
     )
     requestor = models.ForeignKey(User, to_field='uuid')
-    price = models.DecimalField(max_digits=8, decimal_places=2)
+    price = models.DecimalField(
+        max_digits=8,
+        decimal_places=2,
+        validators=[MinValueValidator(0.01)]
+        )
     name = models.CharField(max_length=70)
     description = models.TextField()
     date_requested = models.DateTimeField(auto_now_add=True)

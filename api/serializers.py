@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator
 from api.models.user import User
 from api.models.commodity import Commodity
 from api.models.contribution import Contribution
@@ -44,7 +45,11 @@ class CommoditySerializer(serializers.ModelSerializer):
 
     uuid = serializers.UUIDField(read_only=True, format='hex')
     requestor = serializers.ReadOnlyField(source='requestor.username')
-    price = serializers.DecimalField(max_digits=8, decimal_places=2)
+    price = serializers.DecimalField(
+        max_digits=8,
+        decimal_places=2,
+        validators=[MinValueValidator(0.01)]
+        )
     commodity_qr = serializers.ImageField(use_url=True, read_only=True)
     funded = serializers.BooleanField(read_only=True)
     remaining_amount = serializers.DecimalField(
@@ -79,6 +84,11 @@ class ContributionSerializer(serializers.ModelSerializer):
     contributing_to = serializers.SlugRelatedField(
         queryset=Commodity.objects.all(),
         slug_field='name'
+        )
+    amount = serializers.DecimalField(
+        max_digits=8,
+        decimal_places=2,
+        validators=[MinValueValidator(0.01)]
         )
 
     class Meta:
