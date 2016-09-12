@@ -38,6 +38,13 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
+    def update(self, instance, validated_data):
+        """updates a user
+        """
+        instance.set_password(validated_data['password'])
+        instance.save()
+        return instance
+
 
 class CommoditySerializer(serializers.ModelSerializer):
     """Serializer for commodity model
