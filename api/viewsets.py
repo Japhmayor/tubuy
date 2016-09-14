@@ -2,6 +2,7 @@ from rest_framework import viewsets, permissions
 from api.models.user import User
 from api.models.commodity import Commodity
 from api.models.contribution import Contribution
+from api.permissions import IsStaffOrTargetUser
 from api.serializers import (
     UserSerializer,
     CommoditySerializer,
@@ -16,6 +17,9 @@ class UserViewset(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     lookup_field = ('uuid')
+
+    def get_permissions(self):
+        return (permissions.AllowAny() if self.request.method == 'POST' else IsStaffOrTargetUser()),
 
 
 class CommodityViewset(viewsets.ModelViewSet):
