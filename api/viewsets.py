@@ -17,6 +17,9 @@ class UserViewset(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     lookup_field = ('uuid')
 
+    def get_permissions(self):
+        return (permissions.AllowAny() if self.request.method == 'POST' else IsStaffOrTargetUser())
+
 
 class CommodityViewset(viewsets.ModelViewSet):
     """viewset for the commodity model
