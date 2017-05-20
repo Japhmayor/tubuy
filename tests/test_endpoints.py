@@ -17,7 +17,7 @@ class APIResourcesTestCase(APITestCase):
 
         # obtain token for test user
         user_token = self.client.post(
-            '/auth/',
+            '/token-auth/',
             {'phone_number': '+254701234567', 'password': 'tester'}
             )
         self.token = user_token.data['token']
