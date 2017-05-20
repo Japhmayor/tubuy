@@ -1,34 +1,20 @@
-[![Build Status](https://travis-ci.org/SolubleCode/tubuy.svg?branch=master)](https://travis-ci.org/SolubleCode/tubuy)
-[![Coverage Status](https://coveralls.io/repos/github/SolubleCode/tubuy/badge.svg?branch=develop)](https://coveralls.io/github/SolubleCode/tubuy?branch=develop)
-[![Code Issues](https://www.quantifiedcode.com/api/v1/project/69c35832d6df484cb4150bd036a4fa7d/badge.svg)](https://www.quantifiedcode.com/app/project/69c35832d6df484cb4150bd036a4fa7d)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![Slack Status](https://solublecode-slack.herokuapp.com/badge.svg)](https://solublecode-slack.herokuapp.com)
+<h2 align="center"><a href="http://docs.tubuy.apiary.io/">Tubuy</a></h2>
+<p align="center">
+  <br>
+  <img src="https://cloud.githubusercontent.com/assets/10899666/26278952/e72381e8-3daf-11e7-8619-c10c76578695.gif" height="200">
+  <br>
+  <a href="https://github.com/SolubleCode/tubuy/fork"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome"></a>
+  <a href="https://travis-ci.org/SolubleCode/tubuy"><img src="https://travis-ci.org/SolubleCode/tubuy.svg" alt="Travis"></a>
+  <a href="https://coveralls.io/github/SolubleCode/tubuy?branch=develop"><img src="https://coveralls.io/repos/github/SolubleCode/tubuy/badge.svg?branch=develop" alt="Coveralls"></a>
+  <a href="https://www.quantifiedcode.com/app/project/69c35832d6df484cb4150bd036a4fa7d"><img src="https://www.quantifiedcode.com/api/v1/project/69c35832d6df484cb4150bd036a4fa7d/badge.svg" alt="Quantifiedcode"></a>
+</p>
 
-## [Tubuy](http://docs.tubuy.apiary.io/)
+## :bulb:
+- Create request for funding on commodity
+- Receive contributions
+- Prosper
 
-
-![sharing](https://cdn.rawgit.com/andela-cmutembei/nunua/master/static/images/sharing.gif)
-
-> "sharing is caring" - anonymous``
-
-
-**Tubuy** is a platform that enables seamless crowd-funding towards commodities for people with a common interest. It is currently a work-in-progress.
-
-### Testing
-
-Feel free to test the `tubuy` [API](http://docs.tubuy.apiary.io/) and offer feedback through <whenyourepissed@gmail.com>.
-
-
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/7f0aa338aa2fdcdd9866#?env%5Btubuy-heroku%5D=W3sia2V5IjoidHVidXlfdXJsIiwidmFsdWUiOiJ0dWJ1eS5oZXJva3VhcHAuY29tIiwidHlwZSI6InRleHQiLCJlbmFibGVkIjp0cnVlfSx7ImtleSI6Imp3dF90b2tlbiIsInZhbHVlIjoiIiwidHlwZSI6InRleHQiLCJlbmFibGVkIjp0cnVlfV0=)
-
-In the spirit of [TDD](http://www.obeythetestinggoat.com/) you can run the tests as follows:
-
-```shell
-$ git clone https://github.com/SolubleCode/tubuy.git && cd tubuy
-$ python manage.py test
-```
-
-### License
+## :scroll:
 ```
 The MIT License (MIT)
 
