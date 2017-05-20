@@ -1,12 +1,14 @@
+import re
+import uuid
+
+from django.db import models
+from django.core import validators
+from django.utils.encoding import python_2_unicode_compatible
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
     PermissionsMixin
-    )
-from django.core import validators
-from django.db import models
-import uuid
-import re
+)
 
 
 class UserManager(BaseUserManager):
@@ -26,6 +28,7 @@ class UserManager(BaseUserManager):
         return account
 
 
+@python_2_unicode_compatible
 class User(AbstractBaseUser, PermissionsMixin):
     """Model defining the user
     """
@@ -55,5 +58,5 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
-    def __unicode__(self):
-        return self.username
+    def __str__(self):
+        return self.phone_number

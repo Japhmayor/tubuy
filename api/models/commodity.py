@@ -1,7 +1,10 @@
-from django.core.validators import MinValueValidator
-from django.db import models
 import random
 import uuid
+
+from django.core.validators import MinValueValidator
+from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
+
 from api.models.user import User
 from api.util import generate_qr
 
@@ -20,6 +23,7 @@ def upload_path(instance, filename):
     return file_path
 
 
+@python_2_unicode_compatible
 class Commodity(models.Model):
     """Commodity model defining item to be co-buyied
     """
@@ -51,5 +55,5 @@ class Commodity(models.Model):
         generate_qr(self, salt)
         super(Commodity, self).save(**kwargs)
 
-    def __unicode__(self):
+    def __str__(self):
         return '{0} {1} {2}'.format(self.requestor, self.name, self.price)

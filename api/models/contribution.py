@@ -1,10 +1,14 @@
+import uuid
+
 from django.core.validators import MinValueValidator
 from django.db import models
-import uuid
-from api.models.user import User
+from django.utils.encoding import python_2_unicode_compatible
+
 from api.models.commodity import Commodity
+from api.models.user import User
 
 
+@python_2_unicode_compatible
 class Contribution(models.Model):
     """Contribution model defining co-buyers and their contribution
     """
@@ -40,5 +44,5 @@ class Contribution(models.Model):
         commodity.save()
         super(Contribution, self).save(**kwargs)
 
-    def __unicode__(self):
+    def __str__(self):
         return '{0} {1}'.format(self.contributer, self.amount)
