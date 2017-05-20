@@ -2,12 +2,12 @@ from rest_framework import viewsets, permissions
 from api.models.user import User
 from api.models.commodity import Commodity
 from api.models.contribution import Contribution
-from api.permissions import IsStaffOrTargetUser
+from api.permissions import IsStaffOrTargetUser, CommodityOwner
 from api.serializers import (
     UserSerializer,
     CommoditySerializer,
     ContributionSerializer
-    )
+)
 
 
 class UserViewset(viewsets.ModelViewSet):
@@ -29,7 +29,7 @@ class CommodityViewset(viewsets.ModelViewSet):
     queryset = Commodity.objects.all()
     serializer_class = CommoditySerializer
     lookup_field = ('uuid')
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.IsAuthenticated, CommodityOwner,)
 
     def perform_create(self, serializer):
         """sets the currently logged in user as requestor
