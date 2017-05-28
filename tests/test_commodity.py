@@ -2,7 +2,6 @@ from rest_framework.test import APITestCase, APIClient
 from rest_framework.reverse import reverse
 
 from api.models.user import User
-from api.models.contribution import Contribution
 
 class APIUsersTestCase(APITestCase):
     """Testcase for users on tubuy
@@ -25,28 +24,23 @@ class APIUsersTestCase(APITestCase):
 
         self.client.credentials(HTTP_AUTHORIZATION='JWT ' + self.token)
 
-        self.commodity = self.client.post(
-            reverse('api:commodity-list'),
-            {
-                "name": "test commodity",
-                "description": "test commodity description",
-                "price": 100
-            }
-        )
 
-    def test_making_negative_contribution_not_possible(self):
-        """ ensure that user cannot pass a negative value as a contribution
-        amount
+    def test_creating_commodity_with_negative_price_not_possible(self):
+        """ ensure that user cannot pass a negative value as a commodity
+        price
         """
-        contribution = {
-            'contributing_to': self.commodity.data['name'],
-            'amount': -10
+        commodity =  {
+            "name": "test commodity",
+            "description": "test commodity description",
+            "price": -100
         }
+
         response = self.client.post(
-            reverse('api:contribution-list'),
-            contribution,
+            reverse('api:commodity-list'),
+            commodity
         )
         self.assertEqual(response.status_code, 400)
-        self.assertTrue(
-            b'{"amount":["Ensure this value is greater than or equal to 0.01."]}' in response.content
+        self.assertEqual(
+            response.data.get('price'),
+            ["Ensure this value is greater than or equal to 0.01."]
         )
