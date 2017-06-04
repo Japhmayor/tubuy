@@ -54,6 +54,6 @@ class ContributionViewset(viewsets.ModelViewSet):
 
         user = User.objects.get(uuid=self.request.user.uuid)
         contributing_to = Commodity.objects.get(
-            name=self.request.data['contributing_to']
+            uuid=self.request.data['contributing_to']
             )
         serializer.save(contributer=user, contributing_to=contributing_to)

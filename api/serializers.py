@@ -90,7 +90,7 @@ class ContributionSerializer(serializers.ModelSerializer):
     contributer = serializers.ReadOnlyField(source='contributer.username')
     contributing_to = serializers.SlugRelatedField(
         queryset=Commodity.objects.all(),
-        slug_field='name'
+        slug_field='uuid'
         )
     amount = serializers.DecimalField(
         max_digits=8,
