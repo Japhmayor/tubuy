@@ -2,6 +2,7 @@ from rest_framework.test import APITestCase, APIClient
 from rest_framework.reverse import reverse
 
 from api.models.user import User
+from api.models.commodity import Commodity
 
 class APIUsersTestCase(APITestCase):
     """Testcase for users on tubuy
@@ -60,9 +61,13 @@ class APIUsersTestCase(APITestCase):
         )
 
         # make initial contribution
+        commodity_to_contributed_to = Commodity.objects.get(
+            name=commodity['name'],
+            price=commodity['price']
+        )
 
         contribution = {
-            'contributing_to': commodity['name'],
+            'contributing_to': commodity_to_contributed_to.uuid,
             'amount': 50
         }
         initial_contrib_response = self.client.post(
