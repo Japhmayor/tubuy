@@ -29,7 +29,7 @@ These are just guidelines, not rules, use your best judgment and feel free to pr
 
 This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDUCT.md).
 By participating, you are expected to uphold this code.
-Please report unacceptable behavior to [whenyourepissed@gmail.com](mailto:whenyourepissed@gmail.com).
+Please report unacceptable behavior to [mutembei.collin@gmail.com](mailto:mutembei.collin@gmail.com).
 
 ### Project Decisions
 
